@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "vehicle_deliveries",
+  "info": {
+    "singularName": "vehicle-delivery",
+    "pluralName": "vehicle-deliveries",
+    "displayName": "VehicleDelivery",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date_delivery": {
+      "type": "date",
+      "required": true
+    },
+    "authorized_by": {
+      "type": "string",
+      "required": true
+    },
+    "name_surname_deliverer": {
+      "type": "string",
+      "required": true
+    },
+    "position_deliverer": {
+      "type": "string",
+      "required": true
+    },
+    "name_surname_recipient": {
+      "type": "string",
+      "required": true
+    },
+    "position_recipient": {
+      "type": "string",
+      "required": true
+    },
+    "scanned_file": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "No_delivery": {
+      "type": "integer",
+      "required": true
+    },
+    "vehicle": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::vehicle.vehicle"
+    }
+  }
+}
