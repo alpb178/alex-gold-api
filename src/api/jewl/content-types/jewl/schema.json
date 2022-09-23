@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jewls",
+  "info": {
+    "singularName": "jewl",
+    "pluralName": "jewls",
+    "displayName": "jewl"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "weight": {
+      "type": "float"
+    },
+    "model": {
+      "type": "string"
+    },
+    "price": {
+      "type": "float"
+    },
+    "description": {
+      "type": "text"
+    },
+    "carats": {
+      "type": "float"
+    }
+  }
+}

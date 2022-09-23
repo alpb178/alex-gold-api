@@ -31,11 +31,6 @@
     "observations": {
       "type": "text",
       "required": true
-    },
-    "vehicle": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::vehicle.vehicle"
     }
   }
 }
