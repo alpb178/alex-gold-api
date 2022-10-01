@@ -66,6 +66,18 @@
     "phone": {
       "type": "biginteger",
       "required": true
+    },
+    "isClient": {
+      "type": "boolean",
+      "default": true
+    },
+    "name": {
+      "type": "string",
+      "required": false
+    },
+    "lastName": {
+      "type": "string",
+      "required": false
     }
   }
 }
