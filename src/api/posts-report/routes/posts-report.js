@@ -9,5 +9,14 @@ module.exports = {
             middlewares: [],
           },
         },
+        {
+          method: "GET",
+          path: "/posts-report/findByModel/:model",
+          handler: "posts-report.findJewlByModel",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+        },
       ],
     };
