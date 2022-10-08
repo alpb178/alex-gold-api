@@ -30,17 +30,22 @@ const rawBuilder = strapi.db.connection.raw(
  const findJewlByModel= async(pObjeto)=>
 {
 const nombre=pObjeto.params.model;
-
-const rawBuilder = strapi.db.connection.raw(
-      "SELECT jewls.id as jewl_id, weight, model, price, description, carats, large,measure_units.name as measure_unit_weight  FROM public.jewls join jewls_measure_unit_weight_links on jewls.id=jewls_measure_unit_weight_links.jewl_id join measure_units "
-  +" on jewls_measure_unit_weight_links.measure_unit_id=measure_units.id"+
-    
-   " WHERE public.jewls.model ='"+nombre+"'"
-    );
+const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+  where: {
+    model: nombre,    
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+    users_permissions_client: true,
+    users_permissions_vendor: true,
+  },
+});
 	
-    const resp = await rawBuilder.then();
 
-    return resp.rows;
+    return rawBuilder;
 }
 
     module.exports = {
