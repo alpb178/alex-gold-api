@@ -4,7 +4,7 @@
  * A set of functions called "actions" for `posts-report`
  */
 
- const findJewlByClient= async(pObjeto)=>
+ const findByClient= async(pObjeto)=>
 {
 const nombre=pObjeto.params.client;
 
@@ -27,29 +27,71 @@ const rawBuilder = strapi.db.connection.raw(
     return storesFiltered;
 }
 
- const findJewlByModel= async(pObjeto)=>
+const findByModel= async(pObjeto)=>
 {
 const nombre=pObjeto.params.model;
-const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+const availability=pObjeto.params.availability;
+const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
-    model: nombre,    
+            model: nombre,  
+            availability: {
+                $gte: 1,
+            },      
   },
    populate: {
     measure_unit_weight: true,
     measure_unit_large: true,
     measure_unit_price: true,
     measure_unit_carats: true,
-    users_permissions_client: true,
-    users_permissions_vendor: true,
   },
 });
-	
+    
+
+    return rawBuilder;
+}
+const findByCode= async(pObjeto)=>
+{
+const code=pObjeto.params.code;
+const availability=pObjeto.params.availability;
+const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
+  where: {
+            availability: {
+                $gte: 1,
+            },
+            code: code,      
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+  },
+});
+
+    return rawBuilder;
+}
+const findAll= async(pObjeto)=>
+{
+const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
+  where: {
+        availability: {
+            $gte: 1,
+        },
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+  },
+});
 
     return rawBuilder;
 }
 
-    module.exports = {
-    
-findJewlByClient,
-findJewlByModel,
-    };
+module.exports = {    
+findByClient,
+findByModel,
+findByCode,
+findAll,
+};

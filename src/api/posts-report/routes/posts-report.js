@@ -2,8 +2,8 @@ module.exports = {
       routes: [
 		{
           method: "GET",
-          path: "/posts-report/find/:client",
-          handler: "posts-report.findJewlByClient",
+          path: "/jwel/findByClient/:client",
+          handler: "posts-report.findByClient",
           config: {
             policies: [],
             middlewares: [],
@@ -11,12 +11,33 @@ module.exports = {
         },
         {
           method: "GET",
-          path: "/posts-report/findByModel/:model",
-          handler: "posts-report.findJewlByModel",
+          path: "/jewlCatalogue/findByCode/:code",
+          handler: "posts-report.findByCode",
           config: {
             policies: [],
             middlewares: [],
           },
+
+        },
+           {
+          method: "GET",
+          path: "/jewlCatalogue/findByModel/:model",
+          handler: "posts-report.findByModel",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+          
+        },
+        {
+          method: "GET",
+          path: "/jewlCatalogue/findAll",
+          handler: "posts-report.findAll",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+          
         },
       ],
     };

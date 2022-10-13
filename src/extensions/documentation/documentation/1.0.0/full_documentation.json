@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2022-10-08T18:35:48.789Z"
+    "x-generation-date": "2022-10-13T05:09:04.309Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -198,6 +198,15 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "code": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              },
+              "status": {
+                "type": "string"
               }
             }
           }
@@ -1195,14 +1204,23 @@
                                   "pattern": "^\\d*$",
                                   "example": "123456789"
                                 },
-                                "isClient": {
-                                  "type": "boolean"
-                                },
                                 "name": {
                                   "type": "string"
                                 },
                                 "lastName": {
                                   "type": "string"
+                                },
+                                "rol": {
+                                  "type": "string"
+                                },
+                                "age": {
+                                  "type": "integer"
+                                },
+                                "genre": {
+                                  "type": "string"
+                                },
+                                "count_jewl": {
+                                  "type": "integer"
                                 },
                                 "createdAt": {
                                   "type": "string",
@@ -1268,6 +1286,15 @@
                           }
                         }
                       }
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "status": {
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "string",
@@ -2335,14 +2362,23 @@
                                 "pattern": "^\\d*$",
                                 "example": "123456789"
                               },
-                              "isClient": {
-                                "type": "boolean"
-                              },
                               "name": {
                                 "type": "string"
                               },
                               "lastName": {
                                 "type": "string"
+                              },
+                              "rol": {
+                                "type": "string"
+                              },
+                              "age": {
+                                "type": "integer"
+                              },
+                              "genre": {
+                                "type": "string"
+                              },
+                              "count_jewl": {
+                                "type": "integer"
                               },
                               "createdAt": {
                                 "type": "string",
@@ -2408,6 +2444,15 @@
                         }
                       }
                     }
+                  },
+                  "code": {
+                    "type": "string"
+                  },
+                  "count": {
+                    "type": "integer"
+                  },
+                  "status": {
+                    "type": "string"
                   },
                   "createdAt": {
                     "type": "string",
@@ -2556,6 +2601,9 @@
               },
               "availability": {
                 "type": "integer"
+              },
+              "code": {
+                "type": "string"
               }
             }
           }
@@ -3344,6 +3392,9 @@
                     },
                     "availability": {
                       "type": "integer"
+                    },
+                    "code": {
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "string",
@@ -4202,6 +4253,9 @@
                   },
                   "availability": {
                     "type": "integer"
+                  },
+                  "code": {
+                    "type": "string"
                   },
                   "createdAt": {
                     "type": "string",
@@ -6934,14 +6988,23 @@
                                                 "pattern": "^\\d*$",
                                                 "example": "123456789"
                                               },
-                                              "isClient": {
-                                                "type": "boolean"
-                                              },
                                               "name": {
                                                 "type": "string"
                                               },
                                               "lastName": {
                                                 "type": "string"
+                                              },
+                                              "rol": {
+                                                "type": "string"
+                                              },
+                                              "age": {
+                                                "type": "integer"
+                                              },
+                                              "genre": {
+                                                "type": "string"
+                                              },
+                                              "count_jewl": {
+                                                "type": "integer"
                                               },
                                               "createdAt": {
                                                 "type": "string",
@@ -7540,14 +7603,23 @@
                                               "pattern": "^\\d*$",
                                               "example": "123456789"
                                             },
-                                            "isClient": {
-                                              "type": "boolean"
-                                            },
                                             "name": {
                                               "type": "string"
                                             },
                                             "lastName": {
                                               "type": "string"
+                                            },
+                                            "rol": {
+                                              "type": "string"
+                                            },
+                                            "age": {
+                                              "type": "integer"
+                                            },
+                                            "genre": {
+                                              "type": "string"
+                                            },
+                                            "count_jewl": {
+                                              "type": "integer"
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -7889,14 +7961,23 @@
                                                               "pattern": "^\\d*$",
                                                               "example": "123456789"
                                                             },
-                                                            "isClient": {
-                                                              "type": "boolean"
-                                                            },
                                                             "name": {
                                                               "type": "string"
                                                             },
                                                             "lastName": {
                                                               "type": "string"
+                                                            },
+                                                            "rol": {
+                                                              "type": "string"
+                                                            },
+                                                            "age": {
+                                                              "type": "integer"
+                                                            },
+                                                            "genre": {
+                                                              "type": "string"
+                                                            },
+                                                            "count_jewl": {
+                                                              "type": "integer"
                                                             },
                                                             "createdAt": {
                                                               "type": "string",
@@ -8524,14 +8605,23 @@
                                                             "pattern": "^\\d*$",
                                                             "example": "123456789"
                                                           },
-                                                          "isClient": {
-                                                            "type": "boolean"
-                                                          },
                                                           "name": {
                                                             "type": "string"
                                                           },
                                                           "lastName": {
                                                             "type": "string"
+                                                          },
+                                                          "rol": {
+                                                            "type": "string"
+                                                          },
+                                                          "age": {
+                                                            "type": "integer"
+                                                          },
+                                                          "genre": {
+                                                            "type": "string"
+                                                          },
+                                                          "count_jewl": {
+                                                            "type": "integer"
                                                           },
                                                           "createdAt": {
                                                             "type": "string",
@@ -9058,14 +9148,23 @@
                 "pattern": "^\\d*$",
                 "example": "123456789"
               },
-              "isClient": {
-                "type": "boolean"
-              },
               "name": {
                 "type": "string"
               },
               "lastName": {
                 "type": "string"
+              },
+              "rol": {
+                "type": "string"
+              },
+              "age": {
+                "type": "integer"
+              },
+              "genre": {
+                "type": "string"
+              },
+              "count_jewl": {
+                "type": "integer"
               }
             }
           }
@@ -9520,14 +9619,23 @@
                                                 "pattern": "^\\d*$",
                                                 "example": "123456789"
                                               },
-                                              "isClient": {
-                                                "type": "boolean"
-                                              },
                                               "name": {
                                                 "type": "string"
                                               },
                                               "lastName": {
                                                 "type": "string"
+                                              },
+                                              "rol": {
+                                                "type": "string"
+                                              },
+                                              "age": {
+                                                "type": "integer"
+                                              },
+                                              "genre": {
+                                                "type": "string"
+                                              },
+                                              "count_jewl": {
+                                                "type": "integer"
                                               },
                                               "createdAt": {
                                                 "type": "string",
@@ -9631,14 +9739,23 @@
                       "pattern": "^\\d*$",
                       "example": "123456789"
                     },
-                    "isClient": {
-                      "type": "boolean"
-                    },
                     "name": {
                       "type": "string"
                     },
                     "lastName": {
                       "type": "string"
+                    },
+                    "rol": {
+                      "type": "string"
+                    },
+                    "age": {
+                      "type": "integer"
+                    },
+                    "genre": {
+                      "type": "string"
+                    },
+                    "count_jewl": {
+                      "type": "integer"
                     },
                     "createdAt": {
                       "type": "string",
@@ -10159,14 +10276,23 @@
                                               "pattern": "^\\d*$",
                                               "example": "123456789"
                                             },
-                                            "isClient": {
-                                              "type": "boolean"
-                                            },
                                             "name": {
                                               "type": "string"
                                             },
                                             "lastName": {
                                               "type": "string"
+                                            },
+                                            "rol": {
+                                              "type": "string"
+                                            },
+                                            "age": {
+                                              "type": "integer"
+                                            },
+                                            "genre": {
+                                              "type": "string"
+                                            },
+                                            "count_jewl": {
+                                              "type": "integer"
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -10270,14 +10396,23 @@
                     "pattern": "^\\d*$",
                     "example": "123456789"
                   },
-                  "isClient": {
-                    "type": "boolean"
-                  },
                   "name": {
                     "type": "string"
                   },
                   "lastName": {
                     "type": "string"
+                  },
+                  "rol": {
+                    "type": "string"
+                  },
+                  "age": {
+                    "type": "integer"
+                  },
+                  "genre": {
+                    "type": "string"
+                  },
+                  "count_jewl": {
+                    "type": "integer"
                   },
                   "createdAt": {
                     "type": "string",

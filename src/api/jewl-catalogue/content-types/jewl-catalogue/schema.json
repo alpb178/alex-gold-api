@@ -62,7 +62,11 @@
       "target": "api::measure-unit.measure-unit"
     },
     "availability": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
+    },
+    "code": {
+      "type": "string"
     }
   }
 }

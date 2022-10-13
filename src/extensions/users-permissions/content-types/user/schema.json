@@ -67,10 +67,6 @@
       "type": "biginteger",
       "required": true
     },
-    "isClient": {
-      "type": "boolean",
-      "default": true
-    },
     "name": {
       "type": "string",
       "required": false
@@ -78,6 +74,18 @@
     "lastName": {
       "type": "string",
       "required": false
+    },
+    "rol": {
+      "type": "string"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "genre": {
+      "type": "string"
+    },
+    "count_jewl": {
+      "type": "integer"
     }
   }
 }
