@@ -3,7 +3,7 @@ module.exports = {
 		{
           method: "GET",
           path: "/jwel/findByClient/:client",
-          handler: "posts-report.findByClient",
+          handler: "posts-report.findJwelByClient",
           config: {
             policies: [],
             middlewares: [],
@@ -11,8 +11,38 @@ module.exports = {
         },
         {
           method: "GET",
+          path: "/jwel/findByCode/:code",
+          handler: "posts-report.findJwelByCode",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+        },
+        {
+          method: "GET",
+          path: "/jwel/findByModel/:model",
+          handler: "posts-report.findJwelByModel",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+          
+        },
+        {
+          method: "GET",
+          path: "/jwel/findAll",
+          handler: "posts-report.findAllJewl",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+          
+        },
+
+        {
+          method: "GET",
           path: "/jewlCatalogue/findByCode/:code",
-          handler: "posts-report.findByCode",
+          handler: "posts-report.findJewlCatalogueByCode",
           config: {
             policies: [],
             middlewares: [],
@@ -22,7 +52,7 @@ module.exports = {
            {
           method: "GET",
           path: "/jewlCatalogue/findByModel/:model",
-          handler: "posts-report.findByModel",
+          handler: "posts-report.findJewlCatalogueByModel",
           config: {
             policies: [],
             middlewares: [],
@@ -32,7 +62,7 @@ module.exports = {
         {
           method: "GET",
           path: "/jewlCatalogue/findAll",
-          handler: "posts-report.findAll",
+          handler: "posts-report.findAllJewlCatalogue",
           config: {
             policies: [],
             middlewares: [],

@@ -4,7 +4,7 @@
  * A set of functions called "actions" for `posts-report`
  */
 
- const findByClient= async(pObjeto)=>
+ const findJwelByClient= async(pObjeto)=>
 {
 const nombre=pObjeto.params.client;
 
@@ -27,10 +27,76 @@ const rawBuilder = strapi.db.connection.raw(
     return storesFiltered;
 }
 
-const findByModel= async(pObjeto)=>
+const findJwelByCode= async(pObjeto)=>
+{
+const code=pObjeto.params.code;
+const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+  where: {
+            count: {
+                $gte: 1,
+            },
+            code: code,      
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+    users_permissions_client: true,
+    users_permissions_vendor: true,
+  },
+});
+
+    return rawBuilder;
+}
+const findJwelByModel= async(pObjeto)=>
 {
 const nombre=pObjeto.params.model;
-const availability=pObjeto.params.availability;
+const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+  where: {
+            model: nombre,  
+            count: {
+                $gte: 1,
+            },      
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+    users_permissions_client: true,
+    users_permissions_vendor: true,
+  },
+});
+    
+
+    return rawBuilder;
+}
+
+const findAllJewl= async(pObjeto)=>
+{
+const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+  where: {
+        count: {
+            $gte: 1,
+        },
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+    users_permissions_client: true,
+    users_permissions_vendor: true,
+  },
+});
+
+    return rawBuilder;
+}
+
+const findJewlCatalogueByModel= async(pObjeto)=>
+{
+const nombre=pObjeto.params.model;
 const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
             model: nombre,  
@@ -49,7 +115,7 @@ const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').f
 
     return rawBuilder;
 }
-const findByCode= async(pObjeto)=>
+const findJewlCatalogueByCode= async(pObjeto)=>
 {
 const code=pObjeto.params.code;
 const availability=pObjeto.params.availability;
@@ -70,7 +136,7 @@ const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').f
 
     return rawBuilder;
 }
-const findAll= async(pObjeto)=>
+const findAllJewlCatalogue= async()=>
 {
 const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
@@ -90,8 +156,11 @@ const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').f
 }
 
 module.exports = {    
-findByClient,
-findByModel,
-findByCode,
-findAll,
+findJwelByClient,
+findJwelByCode,
+findJwelByModel,
+findAllJewl,
+findJewlCatalogueByModel,
+findJewlCatalogueByCode,
+findAllJewlCatalogue,
 };
