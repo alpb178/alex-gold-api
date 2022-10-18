@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2022-10-13T16:30:33.090Z"
+    "x-generation-date": "2022-10-17T18:12:18.477Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1222,6 +1222,9 @@
                                 "count_jewl": {
                                   "type": "integer"
                                 },
+                                "vendedor": {
+                                  "type": "string"
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -2379,6 +2382,9 @@
                               },
                               "count_jewl": {
                                 "type": "integer"
+                              },
+                              "vendedor": {
+                                "type": "string"
                               },
                               "createdAt": {
                                 "type": "string",
@@ -7006,6 +7012,9 @@
                                               "count_jewl": {
                                                 "type": "integer"
                                               },
+                                              "vendedor": {
+                                                "type": "string"
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -7621,6 +7630,9 @@
                                             "count_jewl": {
                                               "type": "integer"
                                             },
+                                            "vendedor": {
+                                              "type": "string"
+                                            },
                                             "createdAt": {
                                               "type": "string",
                                               "format": "date-time"
@@ -7978,6 +7990,9 @@
                                                             },
                                                             "count_jewl": {
                                                               "type": "integer"
+                                                            },
+                                                            "vendedor": {
+                                                              "type": "string"
                                                             },
                                                             "createdAt": {
                                                               "type": "string",
@@ -8623,6 +8638,9 @@
                                                           "count_jewl": {
                                                             "type": "integer"
                                                           },
+                                                          "vendedor": {
+                                                            "type": "string"
+                                                          },
                                                           "createdAt": {
                                                             "type": "string",
                                                             "format": "date-time"
@@ -9165,6 +9183,9 @@
               },
               "count_jewl": {
                 "type": "integer"
+              },
+              "vendedor": {
+                "type": "string"
               }
             }
           }
@@ -9637,6 +9658,9 @@
                                               "count_jewl": {
                                                 "type": "integer"
                                               },
+                                              "vendedor": {
+                                                "type": "string"
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -9756,6 +9780,9 @@
                     },
                     "count_jewl": {
                       "type": "integer"
+                    },
+                    "vendedor": {
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "string",
@@ -10294,6 +10321,9 @@
                                             "count_jewl": {
                                               "type": "integer"
                                             },
+                                            "vendedor": {
+                                              "type": "string"
+                                            },
                                             "createdAt": {
                                               "type": "string",
                                               "format": "date-time"
@@ -10413,6 +10443,9 @@
                   },
                   "count_jewl": {
                     "type": "integer"
+                  },
+                  "vendedor": {
+                    "type": "string"
                   },
                   "createdAt": {
                     "type": "string",

@@ -69,5 +69,25 @@ module.exports = {
           },
           
         },
+        {
+          method: "GET",
+          path: "/user/findByRol/:rol",
+          handler: "posts-report.findUserByRol",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+          
+        },
+        {
+          method: "GET",
+          path: "/user/findByPhone/:phone",
+          handler: "posts-report.findUserByPhone",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+          
+        },
       ],
     };

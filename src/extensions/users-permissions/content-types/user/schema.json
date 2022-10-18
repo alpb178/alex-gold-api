@@ -86,6 +86,9 @@
     },
     "count_jewl": {
       "type": "integer"
+    },
+    "vendedor": {
+      "type": "string"
     }
   }
 }
