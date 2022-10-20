@@ -157,26 +157,22 @@ const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').f
 const findUserByRol= async(pObjeto)=>
 {
 const rol=pObjeto.params.rol;
-const rawBuilder = await strapi.db.query('api::user.user').findMany({
-  where: {
-            
-            rol: rol,      
-  },
-});
+const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where rol = "+rol
+    );
+    const resp = await rawBuilder.then();
 
-    return rawBuilder;
+    return resp.rows;
 }
 const findUserByPhone= async(pObjeto)=>
 {
 const phone=pObjeto.params.phone;
-const rawBuilder = await strapi.db.query('api::users_permissions.user').findMany({
-  where: {
-            
-            phone: phone,      
-  },
-});
+const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where phone = "+phone
+    );
+    const resp = await rawBuilder.then();
 
-    return rawBuilder;
+    return resp.rows;
 }
 
 module.exports = {    
