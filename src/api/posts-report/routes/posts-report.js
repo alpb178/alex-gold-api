@@ -28,17 +28,7 @@ module.exports = {
           },
           
         },
-        {
-          method: "GET",
-          path: "/jwel/findAll",
-          handler: "posts-report.findAllJewl",
-          config: {
-            policies: [],
-            middlewares: [],
-          },
-          
-        },
-
+        
         {
           method: "GET",
           path: "/jewlCatalogue/findByCode/:code",
@@ -59,16 +49,7 @@ module.exports = {
           },
           
         },
-        {
-          method: "GET",
-          path: "/jewlCatalogue/findAll",
-          handler: "posts-report.findAllJewlCatalogue",
-          config: {
-            policies: [],
-            middlewares: [],
-          },
-          
-        },
+        
         {
           method: "GET",
           path: "/user/findByRol/:rol",

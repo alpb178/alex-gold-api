@@ -52,30 +52,9 @@ const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
 const findJwelByModel= async(pObjeto)=>
 {
 const nombre=pObjeto.params.model;
-const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
-  where: {
-            model: nombre,  
-            count: {
-                $gte: 1,
-            },      
-  },
-   populate: {
-    measure_unit_weight: true,
-    measure_unit_large: true,
-    measure_unit_price: true,
-    measure_unit_carats: true,
-    users_permissions_client: true,
-    users_permissions_vendor: true,
-  },
-});
-    
-
-    return rawBuilder;
-}
-
-const findAllJewl= async(pObjeto)=>
+if (nombre=="all")
 {
-const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+    const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
   where: {
         count: {
             $gte: 1,
@@ -93,11 +72,56 @@ const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
 
     return rawBuilder;
 }
+else
+{
+ const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+  where: {
+            model: nombre,  
+            count: {
+                $gte: 1,
+            },      
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+    users_permissions_client: true,
+    users_permissions_vendor: true,
+  },
+});
+
+    return rawBuilder;   
+}
+
+}
+
 
 const findJewlCatalogueByModel= async(pObjeto)=>
 {
+    
 const nombre=pObjeto.params.model;
-const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
+if (nombre=="all")
+ {
+    const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
+  where: {
+        availability: {
+            $gte: 1,
+        },
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+  },
+});
+    return rawBuilder;
+
+ }
+ else
+ {
+   const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
             model: nombre,  
             availability: {
@@ -111,9 +135,10 @@ const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').f
     measure_unit_carats: true,
   },
 });
-    
-
     return rawBuilder;
+
+ }
+
 }
 const findJewlCatalogueByCode= async(pObjeto)=>
 {
@@ -136,24 +161,7 @@ const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').f
 
     return rawBuilder;
 }
-const findAllJewlCatalogue= async()=>
-{
-const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
-  where: {
-        availability: {
-            $gte: 1,
-        },
-  },
-   populate: {
-    measure_unit_weight: true,
-    measure_unit_large: true,
-    measure_unit_price: true,
-    measure_unit_carats: true,
-  },
-});
 
-    return rawBuilder;
-}
 const findUserByRol= async(pObjeto)=>
 {
 const rol=pObjeto.params.rol;
@@ -179,10 +187,8 @@ module.exports = {
 findJwelByClient,
 findJwelByCode,
 findJwelByModel,
-findAllJewl,
 findJewlCatalogueByModel,
 findJewlCatalogueByCode,
-findAllJewlCatalogue,
 findUserByRol,
 findUserByPhone,
 };
