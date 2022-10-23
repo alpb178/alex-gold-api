@@ -101,7 +101,7 @@ const findJewlCatalogueByModel= async(pObjeto)=>
 {
     
 const nombre=pObjeto.params.model;
-if (nombre=="all")
+if (nombre=='all')
  {
     const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
@@ -166,7 +166,7 @@ const findUserByRol= async(pObjeto)=>
 {
 const rol=pObjeto.params.rol;
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = "+rol
+      "select * from up_users where rol = '"+rol+"'"
     );
     const resp = await rawBuilder.then();
 
@@ -176,7 +176,7 @@ const findUserByPhone= async(pObjeto)=>
 {
 const phone=pObjeto.params.phone;
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where phone = "+phone
+      "select * from up_users where phone = '"+phone+"'"
     );
     const resp = await rawBuilder.then();
 
