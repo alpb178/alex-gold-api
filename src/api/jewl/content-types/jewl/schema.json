@@ -27,13 +27,15 @@
       "type": "float"
     },
     "model": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     },
     "price": {
       "type": "float"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "default": "\"\""
     },
     "carats": {
       "type": "float"
@@ -72,14 +74,16 @@
       "target": "plugin::users-permissions.user"
     },
     "code": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     },
     "count": {
       "type": "integer",
       "default": 0
     },
     "status": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     }
   }
 }

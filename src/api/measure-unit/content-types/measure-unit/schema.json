@@ -4,7 +4,8 @@
   "info": {
     "singularName": "measure-unit",
     "pluralName": "measure-units",
-    "displayName": "measure_unit"
+    "displayName": "measure_unit",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,10 +13,12 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     },
     "symbol": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     }
   }
 }

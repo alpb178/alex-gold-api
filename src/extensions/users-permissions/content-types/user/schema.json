@@ -65,30 +65,38 @@
     },
     "phone": {
       "type": "biginteger",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "name": {
       "type": "string",
-      "required": false
+      "required": false,
+      "default": "\"\""
     },
     "lastName": {
       "type": "string",
-      "required": false
+      "required": false,
+      "default": "\"\""
     },
     "rol": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     },
     "age": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "genre": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     },
     "count_jewl": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "vendedor": {
-      "type": "string"
+      "type": "string",
+      "default": "\"\""
     }
   }
 }
