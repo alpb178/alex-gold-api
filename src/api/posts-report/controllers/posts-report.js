@@ -172,6 +172,16 @@ const rawBuilder = strapi.db.connection.raw(
 
     return resp.rows;
 }
+const findUserByAge= async(pObjeto)=>
+{
+const age=pObjeto.params.age;
+const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where age = '"+age+"'"
+    );
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+}
 const findUserByPhone= async(pObjeto)=>
 {
 const phone=pObjeto.params.phone;
@@ -182,6 +192,37 @@ const rawBuilder = strapi.db.connection.raw(
 
     return resp.rows;
 }
+const findUserBySexo= async(pObjeto)=>
+{
+const genre=pObjeto.params.genre;
+const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where genre = '"+genre+"'"
+    );
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+}
+const findUserByName= async(pObjeto)=>
+{
+const name=pObjeto.params.name;
+const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where name = '"+name+"'"
+    );
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+}
+const findUserByCantVentas= async(pObjeto)=>
+{
+const count_jewl=pObjeto.params.count_jewl;
+const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where count_jewl = "+count_jewl
+    );
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+}
+
 
 module.exports = {    
 findJwelByClient,
@@ -191,4 +232,8 @@ findJewlCatalogueByModel,
 findJewlCatalogueByCode,
 findUserByRol,
 findUserByPhone,
+findUserByAge,
+findUserBySexo,
+findUserByCantVentas,
+findUserByName,
 };
