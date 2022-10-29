@@ -11,6 +11,15 @@ module.exports = {
         },
         {
           method: "GET",
+          path: "/jwel/findByVendedor/:vendedor",
+          handler: "posts-report.findJwelByVendedor",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+        },
+        {
+          method: "GET",
           path: "/jwel/findByCode/:code",
           handler: "posts-report.findJwelByCode",
           config: {
@@ -72,14 +81,14 @@ module.exports = {
         },      
 {
           method: "GET",
-          path: "/user/findByAge/:age",
-          handler: "posts-report.findUserByAge",
+          path: "/user/findVendedorByAgeBySexoByCantVentas/:age/:genre/:count_jewl",
+          handler: "posts-report.findVendedorByAgeBySexoByCantVentas",
           config: {
             policies: [],
             middlewares: [],
         },          
         },
-        {
+        /*{
           method: "GET",
           path: "/user/findBySexo/:genre",
           handler: "posts-report.findUserBySexo",
@@ -105,6 +114,7 @@ module.exports = {
             policies: [],
             middlewares: [],
         },          
-        },
+        },*/
+
       ],
     };

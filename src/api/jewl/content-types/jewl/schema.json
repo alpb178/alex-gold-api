@@ -12,57 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "weight": {
-      "type": "float"
-    },
-    "model": {
-      "type": "string",
-      "default": "\"\""
-    },
-    "price": {
-      "type": "float"
-    },
-    "description": {
-      "type": "text",
-      "default": "\"\""
-    },
-    "carats": {
-      "type": "float"
-    },
-    "large": {
-      "type": "float"
-    },
-    "measure_unit_weight": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::measure-unit.measure-unit"
-    },
-    "measure_unit_large": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::measure-unit.measure-unit"
-    },
-    "measure_unit_price": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::measure-unit.measure-unit"
-    },
-    "measure_unit_carats": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::measure-unit.measure-unit"
-    },
     "users_permissions_client": {
       "type": "relation",
       "relation": "oneToOne",
@@ -84,6 +33,11 @@
     "status": {
       "type": "string",
       "default": "\"\""
+    },
+    "jewl_catalogue": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::jewl-catalogue.jewl-catalogue"
     }
   }
 }
