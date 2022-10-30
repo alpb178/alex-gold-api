@@ -105,16 +105,16 @@ module.exports = {
             policies: [],
             middlewares: [],
         },          
-        },
+        },*/
         {
           method: "GET",
-          path: "/user/findByName/:name",
-          handler: "posts-report.findUserByName",
+          path: "/user/findByUserName/:username",
+          handler: "posts-report.findUserByUserName",
           config: {
             policies: [],
             middlewares: [],
         },          
-        },*/
+        },
 
       ],
     };

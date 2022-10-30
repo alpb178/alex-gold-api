@@ -286,11 +286,11 @@ const rawBuilder = strapi.db.connection.raw(
 
     return resp.rows;
 }
-const findUserByName= async(pObjeto)=>
+const findUserByUserName= async(pObjeto)=>
 {
-const name=pObjeto.params.name;
+const username=pObjeto.params.username;
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where name = '"+name+"'"
+      "select * from up_users where username = '"+username+"'"
     );
     const resp = await rawBuilder.then();
 
@@ -306,6 +306,7 @@ findJewlCatalogueByCode,
 findUserByRol,
 findUserByPhone,
 findVendedorByAgeBySexoByCantVentas,
+findUserByUserName,
 /*findUserByAge,
 findUserBySexo,
 //findUserByCantVentas,
