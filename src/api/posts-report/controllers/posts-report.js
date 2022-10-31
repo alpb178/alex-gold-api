@@ -56,6 +56,7 @@ for (const s of resp.rows) {
                 $gte: 1,
             },      
   },
+   
    populate: {
     jewl_catalogue:true,
     users_permissions_client: true,
@@ -177,8 +178,28 @@ if (nombre=='all')
 const findJewlCatalogueByCode= async(pObjeto)=>
 {
 const code=pObjeto.params.code;
-const availability=pObjeto.params.availability;
-const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
+if (code=='all')
+ {
+    const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
+  where: {
+            availability: {
+                $gte: 1,
+            },
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+  },
+});
+
+    return rawBuilder;
+
+ }
+ else
+ {
+    const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
             availability: {
                 $gte: 1,
@@ -194,6 +215,8 @@ const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').f
 });
 
     return rawBuilder;
+
+ }
 }
 
 const findUserByRol= async(pObjeto)=>
@@ -211,64 +234,73 @@ const findVendedorByAgeBySexoByCantVentas= async(pObjeto)=>
 const age=pObjeto.params.age;
 const genre=pObjeto.params.genre;
 const count_jewl=pObjeto.params.count_jewl;
-if (age==0 && genre=="all" && count_jewl=="all")
+if (age==0 && genre=="all" && count_jewl=='false')
 {
  const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor'"
+      "select * from up_users where rol = 'vendedor' ORDER BY count_jewl ASC "
     );
     const resp = await rawBuilder.then();
 
     return resp.rows;  
 }
-else if(age>0 && genre=="all" && count_jewl=="all" )
+else if(age>0 && genre=="all" && count_jewl=='false' )
 {
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where age = '"+age+"' and rol = 'vendedor'"
+      "select * from up_users where age = '"+age+"' and rol = 'vendedor' ORDER BY count_jewl ASC"
     );
     const resp = await rawBuilder.then();  
 
     return resp.rows;
 }
-else if(age>0 && genre!="all" && count_jewl=="all" )
+else if(age>0 && genre!="all" && count_jewl=='false' )
 {
  const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"'"
+      "select * from up_users where age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"' ORDER BY count_jewl ASC"
     );
     const resp = await rawBuilder.then();  
 
     return resp.rows;
 }
-else if(age>0 && genre!="all" && count_jewl!="all" )
+else if(age>0 && genre!="all" && count_jewl=='true' )
 {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where  age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"' and count_jewl = "+count_jewl
+      "select * from up_users where  age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"' ORDER BY count_jewl DESC"
     );
     const resp = await rawBuilder.then();  
 
     return resp.rows;
 }
-else if(age==0 && genre!="all" && count_jewl!="all" )
-{
-  const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where genre='"+genre+"' and rol = 'vendedor' and count_jewl = "+count_jewl
-    );
-    const resp = await rawBuilder.then();  
-
-    return resp.rows;   
-}
-else if(age==0 && genre=="all" && count_jewl!="all" )
+else if(age>0 && genre=="all" && count_jewl=='true' )
 {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor' and count_jewl = "+count_jewl
+      "select * from up_users where  age = '"+age+"' and rol = 'vendedor' ORDER BY count_jewl DESC"
     );
     const resp = await rawBuilder.then();
 
     return resp.rows;
 }
-else (age==0 && genre!="all" && count_jewl=="all" )
+else if(age==0 && genre!="all" && count_jewl=='true' )
+{
+  const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where genre='"+genre+"' and rol = 'vendedor' ORDER BY count_jewl DESC "
+    );
+    const resp = await rawBuilder.then();  
+
+    return resp.rows;   
+}
+else if(age==0 && genre=="all" && count_jewl=='true' )
 {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor' and genre = '"+genre+"'"
+      "select * from up_users where rol = 'vendedor' ORDER BY count_jewl DESC "
+    );
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+}
+else (age==0 && genre!="all" && count_jewl=='false' )
+{
+    const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users where rol = 'vendedor' and genre = '"+genre+"' ORDER BY count_jewl ASC"
     );
     const resp = await rawBuilder.then();
 
@@ -289,12 +321,26 @@ const rawBuilder = strapi.db.connection.raw(
 const findUserByUserName= async(pObjeto)=>
 {
 const username=pObjeto.params.username;
+if (username=='all')
+ {
+
+const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users"
+    );
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+ }
+ else
+ {
+
 const rawBuilder = strapi.db.connection.raw(
       "select * from up_users where username = '"+username+"'"
     );
     const resp = await rawBuilder.then();
 
-    return resp.rows;
+    return resp.rows;  
+ }
 }
 module.exports = {    
 findJwelByClient,
