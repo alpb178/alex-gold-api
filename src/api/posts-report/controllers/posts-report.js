@@ -74,6 +74,10 @@ for (const s of resp.rows) {
 const findJwelByCode= async(pObjeto)=>
 {
 const code=pObjeto.params.code;
+const disponibilidad=pObjeto.params.disponibilidad;
+if(disponibilidad==1)
+{
+
 const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
   where: {
             count: {
@@ -88,8 +92,26 @@ const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
   },
 });
 
+    return rawBuilder;    
+}
+else{
+    const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+  where: {
+            
+            code: code,      
+  },
+   populate: {
+    jewl_catalogue:true,
+    users_permissions_client: true,
+    users_permissions_vendor: true,
+  },
+});
+
     return rawBuilder;
 }
+
+}
+
 const findJwelByModel= async(pObjeto)=>
 {
 const nombre=pObjeto.params.model;

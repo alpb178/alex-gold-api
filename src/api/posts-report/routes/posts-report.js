@@ -20,7 +20,7 @@ module.exports = {
         },
         {
           method: "GET",
-          path: "/jwel/findByCode/:code",
+          path: "/jwel/findByCode/:code/:disponibilidad",
           handler: "posts-report.findJwelByCode",
           config: {
             policies: [],
