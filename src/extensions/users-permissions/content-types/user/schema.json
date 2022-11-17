@@ -97,6 +97,10 @@
     "vendedor": {
       "type": "string",
       "default": "\"\""
+    },
+    "isBlocked": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
