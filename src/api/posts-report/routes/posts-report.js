@@ -20,6 +20,15 @@ module.exports = {
         },
         {
           method: "GET",
+          path: "/jwel/findByUser/:id",
+          handler: "posts-report.findJwelByUser",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+        },
+        {
+          method: "GET",
           path: "/jwel/findByCode/:code/:disponibilidad",
           handler: "posts-report.findJwelByCode",
           config: {

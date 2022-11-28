@@ -36,6 +36,81 @@ for (const s of resp.rows) {
 	}
     return storesFiltered;
 }
+
+
+const findJwelByUser= async(pObjeto)=>
+{
+    const nombre=pObjeto.params.id;
+    const rawBuilder = strapi.db.connection.raw(
+      "select * from jewls_users_permissions_vendor_links where user_id = "+nombre
+    );
+    
+    const resp = await rawBuilder.then();
+     console.log(Object.entries(resp.rows).length != 0);
+    let storesFiltered = [];
+    if (Object.entries(resp.rows).length!=0)
+    {
+        
+        for (const s of resp.rows) {
+ 
+            const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+                where: {
+                        id: s.jewl_id,  
+                        count: {
+                                $gte: 1,
+                        },      
+                    },
+   
+                populate: {
+                jewl_catalogue:true,
+                users_permissions_client: true,
+                users_permissions_vendor: true,
+                },
+             });               
+            if (Object.entries(rawBuilder).length!=0)
+            {
+                storesFiltered.push(rawBuilder); 
+            }
+        }
+        return storesFiltered;  
+    }
+    else
+        {
+            const rawBuilder = strapi.db.connection.raw(
+            "select * from jewls_users_permissions_client_links where user_id = "+nombre
+            );
+            const resp = await rawBuilder.then();
+            if (Object.entries(resp.rows).length!=0)
+            {
+                for (const s of resp.rows)
+                {
+                    const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+                        where: {
+                                id: s.jewl_id,  
+                                count: {
+                                        $gte: 1,
+                                },      
+                        },  
+                        populate: {
+                                    users_permissions_client: true,
+                                    users_permissions_vendor: true,
+                                    jewl_catalogue:true,
+                        },
+                    });           
+                    if (Object.entries(rawBuilder).length!=0)
+                    {
+                    storesFiltered.push(rawBuilder);  
+                    }    
+                }
+                return storesFiltered
+            }
+            else
+            {
+                return storesFiltered
+            }
+        }
+}
+
  const findJwelByVendedor= async(pObjeto)=>
 {
 const nombre=pObjeto.params.vendedor;
@@ -45,29 +120,39 @@ const rawBuilder = strapi.db.connection.raw(
     );
     
     const resp = await rawBuilder.then();
-    // console.log(resp.rows);
-let storesFiltered = [];
-for (const s of resp.rows) {
+     console.log(Object.entries(resp.rows).length != 0);
+    let storesFiltered = [];
+    if (Object.entries(resp.rows).length!=0)
+    {
+        
+        for (const s of resp.rows) {
  
- const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
-  where: {
-            id: s.jewl_id,  
-            count: {
-                $gte: 1,
-            },      
-  },
+            const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
+                where: {
+                        id: s.jewl_id,  
+                        count: {
+                                $gte: 1,
+                        },      
+                    },
    
-   populate: {
-    jewl_catalogue:true,
-    users_permissions_client: true,
-    users_permissions_vendor: true,
-  },
-});               
-
-    storesFiltered.push(rawBuilder);
-    
+                populate: {
+                jewl_catalogue:true,
+                users_permissions_client: true,
+                users_permissions_vendor: true,
+                },
+             });               
+            if (Object.entries(rawBuilder).length!=0)
+            {
+                storesFiltered.push(rawBuilder); 
+            }
+        }
+        return storesFiltered;  
     }
-    return storesFiltered;
+    else
+    {
+        return storesFiltered
+    }
+
 }
 
 
@@ -244,12 +329,26 @@ if (code=='all')
 const findUserByRol= async(pObjeto)=>
 {
 const rol=pObjeto.params.rol;
-const rawBuilder = strapi.db.connection.raw(
+if (rol=="all")
+ {
+    const rawBuilder = strapi.db.connection.raw(
+      "select * from up_users"
+    );
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+
+ }
+ else
+ {
+    const rawBuilder = strapi.db.connection.raw(
       "select * from up_users where rol = '"+rol+"'"
     );
     const resp = await rawBuilder.then();
 
     return resp.rows;
+
+ }
 }
 const findVendedorByAgeBySexoByCantVentas= async(pObjeto)=>
 {
@@ -367,6 +466,7 @@ const rawBuilder = strapi.db.connection.raw(
 module.exports = {    
 findJwelByClient,
 findJwelByVendedor,
+findJwelByUser,
 findJwelByCode,
 findJwelByModel,
 findJewlCatalogueByModel,
