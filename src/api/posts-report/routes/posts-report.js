@@ -133,6 +133,15 @@ module.exports = {
             middlewares: [],
         },          
         },
+        {
+          method: "GET",
+          path: "/user/updateUserBlocked/:id/:blocked",
+          handler: "posts-report.updateUserBlocked",
+          config: {
+            policies: [],
+            middlewares: [],
+        },          
+        },
 
       ],
     };
