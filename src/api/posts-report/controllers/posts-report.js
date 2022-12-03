@@ -499,6 +499,45 @@ const rawBuilder = strapi.db.connection.raw(
 
     return resp.rows;
 }
+const updatePasswordById= async(pObjeto)=>
+{
+    const password=pObjeto.params.password;
+    const id=pObjeto.params.id;
+
+    const rawBuilder = strapi.db.connection.raw(
+          "update up_users set  password = '"+password+"' where id="+id
+        );
+      console.log(rawBuilder.then);
+
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+}
+
+const updatePasswordByUsername= async(pObjeto)=>
+{
+    const password=pObjeto.params.password;
+    const username=pObjeto.params.username;
+
+    const rawBuilder = strapi.db.connection.raw(
+          "update up_users set  password = '"+password+"' where username="+"'"+username+"'"
+        );
+      console.log(rawBuilder.then);
+
+    const resp = await rawBuilder.then();
+
+    return resp.rows;
+}
+
+/*const updateUser=async(ctx)=>{
+      console.log(ctx.request.body);
+
+  // some logic here
+  const response = await strapi.query('up_users').update(ctx);
+  // some more logic
+
+  return response;
+}*/
 
 module.exports = {    
 findJwelByClient,
@@ -514,6 +553,9 @@ findVendedorByAgeBySexoByCantVentas,
 findUserByUserName,
 findUserVendedorByUserName,
 updateUserBlocked,
+//updateUser,
+updatePasswordById,
+updatePasswordByUsername,
 /*findUserByAge,
 findUserBySexo,
 //findUserByCantVentas,

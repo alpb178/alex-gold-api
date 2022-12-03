@@ -142,6 +142,33 @@ module.exports = {
             middlewares: [],
         },          
         },
-
+         {
+          method: "GET",
+          path: "/user/update/password/id/:id/:password",
+          handler: "posts-report.updatePasswordById",
+          config: {
+            policies: [],
+            middlewares: [],
+        },          
+        },
+        {
+          method: "GET",
+          path: "/user/update/password/username/:username/:password",
+          handler: "posts-report.updatePasswordByUsername",
+          config: {
+            policies: [],
+            middlewares: [],
+        },          
+        },
+        /*
+        {
+          method: "PUT",
+          path: "/user/update/:id",
+          handler: "posts-report.updateUser",
+          config: {
+            policies: [],
+            middlewares: [],
+        },          
+        },*/
       ],
     };
