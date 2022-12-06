@@ -67,6 +67,16 @@ module.exports = {
           },
           
         },
+        {
+          method: "GET",
+          path: "/jewlCatalogue/findByUser/:user_id",
+          handler: "posts-report.findJewlCatalogueByUser",
+          config: {
+            policies: [],
+            middlewares: [],
+          },
+          
+        },
         
         {
           method: "GET",

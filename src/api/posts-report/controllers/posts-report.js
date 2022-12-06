@@ -325,6 +325,26 @@ if (code=='all')
 
  }
 }
+const findJewlCatalogueByUser= async(pObjeto)=>
+{
+const user_id=pObjeto.params.user_id;
+    const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
+  where: {
+            owner: user_id,      
+  },
+   populate: {
+    measure_unit_weight: true,
+    measure_unit_large: true,
+    measure_unit_price: true,
+    measure_unit_carats: true,
+    owner: true,
+  },
+});
+
+    return rawBuilder;
+
+ }
+
 
 const findUserByRol= async(pObjeto)=>
 {
@@ -547,6 +567,7 @@ findJwelByCode,
 findJwelByModel,
 findJewlCatalogueByModel,
 findJewlCatalogueByCode,
+findJewlCatalogueByUser,
 findUserByRol,
 findUserByPhone,
 findVendedorByAgeBySexoByCantVentas,

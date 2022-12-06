@@ -71,6 +71,11 @@
       "type": "string",
       "required": true,
       "default": "\"\""
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
