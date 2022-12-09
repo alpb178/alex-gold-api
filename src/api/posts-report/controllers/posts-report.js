@@ -257,6 +257,7 @@ if (nombre=='all')
     measure_unit_large: true,
     measure_unit_price: true,
     measure_unit_carats: true,
+    owner:true,
   },
 });
     return rawBuilder;
@@ -277,6 +278,7 @@ if (nombre=='all')
     measure_unit_large: true,
     measure_unit_price: true,
     measure_unit_carats: true,
+    owner:true,
   },
 });
     return rawBuilder;
@@ -302,6 +304,7 @@ if (code=='all')
     measure_unit_large: true,
     measure_unit_price: true,
     measure_unit_carats: true,
+    owner:true,
   },
 });
 
@@ -324,6 +327,7 @@ if (code=='all')
     measure_unit_large: true,
     measure_unit_price: true,
     measure_unit_carats: true,
+    owner:true,
   },
 });
 
