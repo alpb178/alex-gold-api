@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2022-12-09T19:17:30.887Z"
+    "x-generation-date": "2022-12-09T20:18:32.979Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1268,6 +1268,12 @@
                                     }
                                   }
                                 },
+                                "isDelete": {
+                                  "type": "boolean"
+                                },
+                                "img_path": {
+                                  "type": "string"
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -2519,6 +2525,12 @@
                                   }
                                 }
                               },
+                              "isDelete": {
+                                "type": "boolean"
+                              },
+                              "img_path": {
+                                "type": "string"
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -2734,6 +2746,12 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "isDelete": {
+                "type": "boolean"
+              },
+              "img_path": {
+                "type": "string"
               }
             }
           }
@@ -3808,6 +3826,12 @@
                           }
                         }
                       }
+                    },
+                    "isDelete": {
+                      "type": "boolean"
+                    },
+                    "img_path": {
+                      "type": "string"
                     },
                     "createdAt": {
                       "type": "string",
@@ -4952,6 +4976,12 @@
                         }
                       }
                     }
+                  },
+                  "isDelete": {
+                    "type": "boolean"
+                  },
+                  "img_path": {
+                    "type": "string"
                   },
                   "createdAt": {
                     "type": "string",

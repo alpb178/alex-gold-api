@@ -76,6 +76,14 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "isDelete": {
+      "type": "boolean",
+      "default": false
+    },
+    "img_path": {
+      "type": "string",
+      "default": "\"\""
     }
   }
 }

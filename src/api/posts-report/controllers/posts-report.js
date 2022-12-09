@@ -250,6 +250,7 @@ if (nombre=='all')
         availability: {
             $gte: 1,
         },
+        isDelete:false,
   },
    populate: {
     measure_unit_weight: true,
@@ -268,7 +269,8 @@ if (nombre=='all')
             model: nombre,  
             availability: {
                 $gte: 1,
-            },      
+            },
+            isDelete:false,      
   },
    populate: {
     measure_unit_weight: true,
@@ -292,6 +294,8 @@ if (code=='all')
             availability: {
                 $gte: 1,
             },
+            isDelete:false,
+
   },
    populate: {
     measure_unit_weight: true,
@@ -311,7 +315,9 @@ if (code=='all')
             availability: {
                 $gte: 1,
             },
-            code: code,      
+            code: code,
+            isDelete:false,
+
   },
    populate: {
     measure_unit_weight: true,
@@ -330,7 +336,9 @@ const findJewlCatalogueByUser= async(pObjeto)=>
 const user_id=pObjeto.params.user_id;
     const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
-            owner: user_id,      
+            owner: user_id,
+            isDelete:false,
+      
   },
    populate: {
     measure_unit_weight: true,
@@ -344,7 +352,6 @@ const user_id=pObjeto.params.user_id;
     return rawBuilder;
 
  }
-
 
 const findUserByRol= async(pObjeto)=>
 {
