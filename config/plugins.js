@@ -31,6 +31,23 @@ module.exports ={
       },
     },
   },
- 
+ /**/email: {
+    config: {
+      provider: 'nodemailer',
+      providerOptions: {
+        host: '@gmail.com',
+        port: 587,
+        auth: {
+          user: 'jramosg666',
+          pass: 'boli+92080427868666',
+        },
+        // ... any custom nodemailer options
+      },
+      settings: {
+        defaultFrom: 'hello@example.com',
+        defaultReplyTo: 'hello@example.com',
+      },
+    },
+  },
     // ...
   };
