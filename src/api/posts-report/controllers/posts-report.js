@@ -27,7 +27,10 @@ for (const s of resp.rows) {
    populate: {
     users_permissions_client: true,
     users_permissions_vendor: true,
-    jewl_catalogue:true,
+    jewl_catalogue:
+    { 
+        populate:['measure_unit_weight','measure_unit_large','measure_unit_price','measure_unit_carats','owner'],
+    },
   },
 });               
 
@@ -61,10 +64,14 @@ const findJwelByUser= async(pObjeto)=>
                         },      
                     },
    
-                populate: {
-                jewl_catalogue:true,
-                users_permissions_client: true,
-                users_permissions_vendor: true,
+                populate:
+                 {
+                    jewl_catalogue:
+                        { 
+                            populate:['measure_unit_weight','measure_unit_large','measure_unit_price','measure_unit_carats','owner'],
+                        },
+                    users_permissions_client: true,
+                    users_permissions_vendor: true,
                 },
              });               
             if (Object.entries(rawBuilder).length!=0)
@@ -94,7 +101,10 @@ const findJwelByUser= async(pObjeto)=>
                         populate: {
                                     users_permissions_client: true,
                                     users_permissions_vendor: true,
-                                    jewl_catalogue:true,
+                                    jewl_catalogue:
+                                    { 
+                                        populate:['measure_unit_weight','measure_unit_large','measure_unit_price','measure_unit_carats','owner'],
+                                    },
                         },
                     });           
                     if (Object.entries(rawBuilder).length!=0)
@@ -136,7 +146,10 @@ const rawBuilder = strapi.db.connection.raw(
                     },
    
                 populate: {
-                jewl_catalogue:true,
+                    jewl_catalogue:
+                        { 
+                            populate:['measure_unit_weight','measure_unit_large','measure_unit_price','measure_unit_carats','owner'],
+                        },
                 users_permissions_client: true,
                 users_permissions_vendor: true,
                 },
@@ -171,7 +184,10 @@ const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
             code: code,      
   },
    populate: {
-    jewl_catalogue:true,
+        jewl_catalogue:
+    { 
+        populate:['measure_unit_weight','measure_unit_large','measure_unit_price','measure_unit_carats','owner'],
+    },
     users_permissions_client: true,
     users_permissions_vendor: true,
   },
@@ -186,7 +202,10 @@ else{
             code: code,      
   },
    populate: {
-    jewl_catalogue:true,
+        jewl_catalogue:
+    { 
+        populate:['measure_unit_weight','measure_unit_large','measure_unit_price','measure_unit_carats','owner'],
+    },
     users_permissions_client: true,
     users_permissions_vendor: true,
   },
@@ -196,48 +215,6 @@ else{
 }
 
 }
-
-const findJwelByModel= async(pObjeto)=>
-{
-const nombre=pObjeto.params.model;
-if (nombre=="all")
-{
-    const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
-  where: {
-        count: {
-            $gte: 1,
-        },
-  },
-   populate: {
-    jewl_catalogue:true,
-    users_permissions_client: true,
-    users_permissions_vendor: true,
-  },
-});
-
-    return rawBuilder;
-}
-else
-{
- const rawBuilder = await strapi.db.query('api::jewl.jewl').findMany({
-  where: {
-            model: nombre,  
-            count: {
-                $gte: 1,
-            },      
-  },
-   populate: {
-    jewl_catalogue:true,
-    users_permissions_client: true,
-    users_permissions_vendor: true,
-  },
-});
-
-    return rawBuilder;   
-}
-
-}
-
 
 const findJewlCatalogueByModel= async(pObjeto)=>
 {
@@ -575,7 +552,6 @@ findJwelByClient,
 findJwelByVendedor,
 findJwelByUser,
 findJwelByCode,
-findJwelByModel,
 findJewlCatalogueByModel,
 findJewlCatalogueByCode,
 findJewlCatalogueByUser,

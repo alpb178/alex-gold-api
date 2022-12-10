@@ -36,16 +36,6 @@ module.exports = {
             middlewares: [],
           },
         },
-        {
-          method: "GET",
-          path: "/jwel/findByModel/:model",
-          handler: "posts-report.findJwelByModel",
-          config: {
-            policies: [],
-            middlewares: [],
-          },
-          
-        },
         
         {
           method: "GET",
