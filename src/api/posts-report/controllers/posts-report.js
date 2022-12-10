@@ -574,7 +574,19 @@ const updatePasswordByUsername= async(pObjeto)=>
 
     return resp.rows;
 }
+const deleteUserById= async(pObjeto)=>
 {
+    const id=pObjeto.params.id;
+    const phoneNew=pObjeto.params.phone;
+    const rawBuilders = strapi.db.connection.raw(
+      "select * from up_users where rol='vendedor' and phone= "+phoneNew
+    );      
+    const resp = await rawBuilders.then();
+    //console.log(resp);
+    if (Object.entries(resp.rows).length!=0)
+    {
+        const rawBuilder = strapi.db.connection.raw(
+          "update up_users set  is_delete=true where id="+id
         );
 
         await rawBuilder.then();
