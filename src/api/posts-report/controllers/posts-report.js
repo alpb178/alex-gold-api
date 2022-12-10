@@ -1,4 +1,6 @@
 'use strict';
+const axios = require('axios');
+
 
 /**
  * A set of functions called "actions" for `posts-report`
@@ -49,7 +51,6 @@ const findJwelByUser= async(pObjeto)=>
     );
     
     const resp = await rawBuilder.then();
-     console.log(Object.entries(resp.rows).length != 0);
     let storesFiltered = [];
     if (Object.entries(resp.rows).length!=0)
     {
@@ -130,7 +131,6 @@ const rawBuilder = strapi.db.connection.raw(
     );
     
     const resp = await rawBuilder.then();
-     console.log(Object.entries(resp.rows).length != 0);
     let storesFiltered = [];
     if (Object.entries(resp.rows).length!=0)
     {
@@ -167,7 +167,6 @@ const rawBuilder = strapi.db.connection.raw(
     }
 
 }
-
 
 const findJwelByCode= async(pObjeto)=>
 {
@@ -217,8 +216,7 @@ else{
 }
 
 const findJewlCatalogueByModel= async(pObjeto)=>
-{
-    
+{  
 const nombre=pObjeto.params.model;
 if (nombre=='all')
  {
@@ -237,7 +235,16 @@ if (nombre=='all')
     owner:true,
   },
 });
-    return rawBuilder;
+ let storesFiltered = [];
+ for (const s of rawBuilder)
+ {
+  
+const { data } = await axios.get('http://localhost:1337/api/jewl-catalogues/'+s.id+'/?populate=*');
+      s.image=data.data.attributes.image.data[0].id;
+      storesFiltered.push(s);
+    
+ } 
+    return storesFiltered;
 
  }
  else
@@ -246,6 +253,7 @@ if (nombre=='all')
   where: {
             model: nombre,  
             availability: {
+
                 $gte: 1,
             },
             isDelete:false,      
@@ -258,8 +266,16 @@ if (nombre=='all')
     owner:true,
   },
 });
-    return rawBuilder;
-
+ let storesFiltered = [];
+ for (const s of rawBuilder)
+ {
+  
+const { data } = await axios.get('http://localhost:1337/api/jewl-catalogues/'+s.id+'/?populate=*');
+      s.image=data.data.attributes.image.data[0].id;
+      storesFiltered.push(s);
+    
+ } 
+    return storesFiltered;
  }
 
 }
@@ -273,7 +289,7 @@ if (code=='all')
             availability: {
                 $gte: 1,
             },
-            isDelete:false,
+           isDelete:false,
 
   },
    populate: {
@@ -285,8 +301,16 @@ if (code=='all')
   },
 });
 
-    return rawBuilder;
-
+ let storesFiltered = [];      
+ for (const s of rawBuilder)
+ {
+  
+const { data } = await axios.get('http://localhost:1337/api/jewl-catalogues/'+s.id+'/?populate=*');
+      s.image=data.data.attributes.image.data[0].id;
+      storesFiltered.push(s);
+    
+ } 
+    return storesFiltered;
  }
  else
  {
@@ -307,8 +331,16 @@ if (code=='all')
     owner:true,
   },
 });
-
-    return rawBuilder;
+ let storesFiltered = [];
+ for (const s of rawBuilder)
+ {
+  
+const { data } = await axios.get('http://localhost:1337/api/jewl-catalogues/'+s.id+'/?populate=*');
+      s.image=data.data.attributes.image.data[0].id;
+      storesFiltered.push(s);
+    
+ } 
+    return storesFiltered;
 
  }
 }
@@ -329,9 +361,16 @@ const user_id=pObjeto.params.user_id;
     owner: true,
   },
 });
-
-    return rawBuilder;
-
+let storesFiltered = [];      
+ for (const s of rawBuilder)
+ {
+  
+    const { data } = await axios.get('http://localhost:1337/api/jewl-catalogues/'+s.id+'/?populate=*');
+      s.image=data.data.attributes.image.data[0].id;
+      storesFiltered.push(s);
+    
+ } 
+    return storesFiltered;
  }
 
 const findUserByRol= async(pObjeto)=>
@@ -515,7 +554,7 @@ const updatePasswordById= async(pObjeto)=>
     const rawBuilder = strapi.db.connection.raw(
           "update up_users set  password = '"+password+"' where id="+id
         );
-      console.log(rawBuilder.then);
+     // console.log(rawBuilder.then);
 
     const resp = await rawBuilder.then();
 
@@ -530,7 +569,6 @@ const updatePasswordByUsername= async(pObjeto)=>
     const rawBuilder = strapi.db.connection.raw(
           "update up_users set  password = '"+password+"' where username="+"'"+username+"'"
         );
-      console.log(rawBuilder.then);
 
     const resp = await rawBuilder.then();
 
