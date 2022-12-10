@@ -13,5 +13,10 @@ module.exports = {
 
     // let's do a 20% discount everytime
     event.params.data.code = "AG-"+ aleatoria;
+    event.params.data.measure_unit_weight =1;
+    event.params.data.measure_unit_large= 2;
+    event.params.data.measure_unit_price= 3;
+    event.params.data.measure_unit_carats = 4;
+
   },  
 };
