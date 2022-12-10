@@ -160,6 +160,15 @@ module.exports = {
             middlewares: [],
         },          
         },
+        {
+          method: "GET",
+          path: "/user/delete/:id/:phone",
+          handler: "posts-report.deleteUserById",
+          config: {
+            policies: [],
+            middlewares: [],
+        },          
+        },
         /*
         {
           method: "PUT",

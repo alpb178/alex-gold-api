@@ -101,6 +101,10 @@
     "isBlocked": {
       "type": "boolean",
       "default": false
+    },
+    "isDelete": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

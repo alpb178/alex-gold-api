@@ -574,6 +574,34 @@ const updatePasswordByUsername= async(pObjeto)=>
 
     return resp.rows;
 }
+{
+        );
+
+        await rawBuilder.then();
+   
+        const { data } = await axios.get('http://localhost:1337/api/users/'+id);
+        const phone=data.phone;
+        const rawBuilders = strapi.db.connection.raw(
+            "select * from up_users where   vendedor= '"+phone+"'"
+        );      
+        const resp1 = await rawBuilders.then();
+        for (const s of resp1.rows)
+            {
+                const rawBuilder1 = strapi.db.connection.raw(
+                "update up_users set  vendedor = '"+phoneNew+"' where id="+s.id
+                );
+                await rawBuilder1.then();   
+            }
+        
+        return "El vendedor se eliminó satifactoriamente";
+
+    }
+    else
+    {
+        return "No existe ningún vendedor con el número "+phoneNew;
+    }
+}
+
 
 /*const updateUser=async(ctx)=>{
       console.log(ctx.request.body);
@@ -598,6 +626,7 @@ findUserByPhone,
 findVendedorByAgeBySexoByCantVentas,
 findUserByUserName,
 findUserVendedorByUserName,
+deleteUserById,
 updateUserBlocked,
 //updateUser,
 updatePasswordById,

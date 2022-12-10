@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2022-12-10T07:03:44.268Z"
+    "x-generation-date": "2022-12-10T22:40:02.459Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -641,6 +641,9 @@
                                   "type": "string"
                                 },
                                 "isBlocked": {
+                                  "type": "boolean"
+                                },
+                                "isDelete": {
                                   "type": "boolean"
                                 },
                                 "createdAt": {
@@ -1898,6 +1901,9 @@
                                 "type": "string"
                               },
                               "isBlocked": {
+                                "type": "boolean"
+                              },
+                              "isDelete": {
                                 "type": "boolean"
                               },
                               "createdAt": {
@@ -3779,6 +3785,9 @@
                                 "isBlocked": {
                                   "type": "boolean"
                                 },
+                                "isDelete": {
+                                  "type": "boolean"
+                                },
                                 "createdAt": {
                                   "type": "string",
                                   "format": "date-time"
@@ -4927,6 +4936,9 @@
                                 "type": "string"
                               },
                               "isBlocked": {
+                                "type": "boolean"
+                              },
+                              "isDelete": {
                                 "type": "boolean"
                               },
                               "createdAt": {
@@ -7738,6 +7750,9 @@
                                               "isBlocked": {
                                                 "type": "boolean"
                                               },
+                                              "isDelete": {
+                                                "type": "boolean"
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -8359,6 +8374,9 @@
                                             "isBlocked": {
                                               "type": "boolean"
                                             },
+                                            "isDelete": {
+                                              "type": "boolean"
+                                            },
                                             "createdAt": {
                                               "type": "string",
                                               "format": "date-time"
@@ -8721,6 +8739,9 @@
                                                               "type": "string"
                                                             },
                                                             "isBlocked": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "isDelete": {
                                                               "type": "boolean"
                                                             },
                                                             "createdAt": {
@@ -9373,6 +9394,9 @@
                                                           "isBlocked": {
                                                             "type": "boolean"
                                                           },
+                                                          "isDelete": {
+                                                            "type": "boolean"
+                                                          },
                                                           "createdAt": {
                                                             "type": "string",
                                                             "format": "date-time"
@@ -9921,6 +9945,9 @@
               },
               "isBlocked": {
                 "type": "boolean"
+              },
+              "isDelete": {
+                "type": "boolean"
               }
             }
           }
@@ -10399,6 +10426,9 @@
                                               "isBlocked": {
                                                 "type": "boolean"
                                               },
+                                              "isDelete": {
+                                                "type": "boolean"
+                                              },
                                               "createdAt": {
                                                 "type": "string",
                                                 "format": "date-time"
@@ -10523,6 +10553,9 @@
                       "type": "string"
                     },
                     "isBlocked": {
+                      "type": "boolean"
+                    },
+                    "isDelete": {
                       "type": "boolean"
                     },
                     "createdAt": {
@@ -11068,6 +11101,9 @@
                                             "isBlocked": {
                                               "type": "boolean"
                                             },
+                                            "isDelete": {
+                                              "type": "boolean"
+                                            },
                                             "createdAt": {
                                               "type": "string",
                                               "format": "date-time"
@@ -11192,6 +11228,9 @@
                     "type": "string"
                   },
                   "isBlocked": {
+                    "type": "boolean"
+                  },
+                  "isDelete": {
                     "type": "boolean"
                   },
                   "createdAt": {
