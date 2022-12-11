@@ -41,8 +41,6 @@ for (const s of resp.rows) {
 	}
     return storesFiltered;
 }
-
-
 const findJwelByUser= async(pObjeto)=>
 {
     const nombre=pObjeto.params.id;
@@ -614,16 +612,15 @@ const deleteUserById= async(pObjeto)=>
     }
 }
 
-
-/*const updateUser=async(ctx)=>{
-      console.log(ctx.request.body);
-
-  // some logic here
-  const response = await strapi.query('up_users').update(ctx);
-  // some more logic
-
-  return response;
-}*/
+const findIdUserByUsername= async(pObjeto)=>
+{
+    const username=pObjeto.params.username;
+    const rawBuilders = strapi.db.connection.raw(
+            "select * from up_users where username='"+username+"'"
+        );      
+    const resp = await rawBuilders.then();
+    return resp.rows[0].id;
+}
 
 module.exports = {    
 findJwelByClient,
@@ -638,6 +635,7 @@ findUserByPhone,
 findVendedorByAgeBySexoByCantVentas,
 findUserByUserName,
 findUserVendedorByUserName,
+findIdUserByUsername,
 deleteUserById,
 updateUserBlocked,
 //updateUser,

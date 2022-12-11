@@ -126,6 +126,15 @@ module.exports = {
         },
         {
           method: "GET",
+          path: "/user/findIdByUserName/:username",
+          handler: "posts-report.findIdUserByUsername",
+          config: {
+            policies: [],
+            middlewares: [],
+        },          
+        },
+        {
+          method: "GET",
           path: "/user/vendedor/findByUserName/:username",
           handler: "posts-report.findUserVendedorByUserName",
           config: {
