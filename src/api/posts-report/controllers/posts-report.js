@@ -220,9 +220,9 @@ if (nombre=='all')
  {
     const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
-        availability: {
+       /* availability: {
             $gte: 1,
-        },
+        },*/
         isDelete:false,
   },
    populate: {
@@ -250,10 +250,10 @@ const { data } = await axios.get('http://localhost:1337/api/jewl-catalogues/'+s.
    const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
             model: nombre,  
-            availability: {
+            /*availability: {
 
                 $gte: 1,
-            },
+            },*/
             isDelete:false,      
   },
    populate: {
@@ -284,9 +284,9 @@ if (code=='all')
  {
     const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
-            availability: {
+            /*availability: {
                 $gte: 1,
-            },
+            },*/
            isDelete:false,
 
   },
@@ -314,9 +314,9 @@ const { data } = await axios.get('http://localhost:1337/api/jewl-catalogues/'+s.
  {
     const rawBuilder = await strapi.db.query('api::jewl-catalogue.jewl-catalogue').findMany({
   where: {
-            availability: {
+           /* availability: {
                 $gte: 1,
-            },
+            },*/
             code: code,
             isDelete:false,
 
@@ -377,7 +377,7 @@ const rol=pObjeto.params.rol;
 if (rol=="all")
  {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users"
+      "select * from up_users where is_delete=false"
     );
     const resp = await rawBuilder.then();
 
@@ -387,7 +387,7 @@ if (rol=="all")
  else
  {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = '"+rol+"'"
+      "select * from up_users where is_delete=false and rol = '"+rol+"'"
     );
     const resp = await rawBuilder.then();
 
@@ -403,7 +403,7 @@ const count_jewl=pObjeto.params.count_jewl;
 if (age==0 && genre=="all" && count_jewl=='false')
 {
  const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor' ORDER BY count_jewl ASC "
+      "select * from up_users where is_delete=false and rol = 'vendedor' ORDER BY count_jewl ASC "
     );
     const resp = await rawBuilder.then();
 
@@ -412,7 +412,7 @@ if (age==0 && genre=="all" && count_jewl=='false')
 else if(age>0 && genre=="all" && count_jewl=='false' )
 {
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where age = '"+age+"' and rol = 'vendedor' ORDER BY count_jewl ASC"
+      "select * from up_users where is_delete=false and age = '"+age+"' and rol = 'vendedor' ORDER BY count_jewl ASC"
     );
     const resp = await rawBuilder.then();  
 
@@ -421,7 +421,7 @@ const rawBuilder = strapi.db.connection.raw(
 else if(age>0 && genre!="all" && count_jewl=='false' )
 {
  const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"' ORDER BY count_jewl ASC"
+      "select * from up_users where is_delete=false and age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"' ORDER BY count_jewl ASC"
     );
     const resp = await rawBuilder.then();  
 
@@ -430,7 +430,7 @@ else if(age>0 && genre!="all" && count_jewl=='false' )
 else if(age>0 && genre!="all" && count_jewl=='true' )
 {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where  age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"' ORDER BY count_jewl DESC"
+      "select * from up_users where is_delete=false and age = '"+age+"' and rol = 'vendedor' and genre='"+genre+"' ORDER BY count_jewl DESC"
     );
     const resp = await rawBuilder.then();  
 
@@ -439,7 +439,7 @@ else if(age>0 && genre!="all" && count_jewl=='true' )
 else if(age>0 && genre=="all" && count_jewl=='true' )
 {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where  age = '"+age+"' and rol = 'vendedor' ORDER BY count_jewl DESC"
+      "select * from up_users where  is_delete=false and age = '"+age+"' and rol = 'vendedor' ORDER BY count_jewl DESC"
     );
     const resp = await rawBuilder.then();
 
@@ -448,7 +448,7 @@ else if(age>0 && genre=="all" && count_jewl=='true' )
 else if(age==0 && genre!="all" && count_jewl=='true' )
 {
   const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where genre='"+genre+"' and rol = 'vendedor' ORDER BY count_jewl DESC "
+      "select * from up_users where is_delete=false and genre='"+genre+"' and rol = 'vendedor' ORDER BY count_jewl DESC "
     );
     const resp = await rawBuilder.then();  
 
@@ -457,7 +457,7 @@ else if(age==0 && genre!="all" && count_jewl=='true' )
 else if(age==0 && genre=="all" && count_jewl=='true' )
 {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor' ORDER BY count_jewl DESC "
+      "select * from up_users where is_delete=false and rol = 'vendedor' ORDER BY count_jewl DESC "
     );
     const resp = await rawBuilder.then();
 
@@ -466,7 +466,7 @@ else if(age==0 && genre=="all" && count_jewl=='true' )
 else (age==0 && genre!="all" && count_jewl=='false' )
 {
     const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor' and genre = '"+genre+"' ORDER BY count_jewl ASC"
+      "select * from up_users where is_delete=false and rol = 'vendedor' and genre = '"+genre+"' ORDER BY count_jewl ASC"
     );
     const resp = await rawBuilder.then();
 
@@ -478,7 +478,7 @@ const findUserByPhone= async(pObjeto)=>
 {
 const phone=pObjeto.params.phone;
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where phone = '"+phone+"'"
+      "select * from up_users where is_delete=false and phone = '"+phone+"'"
     );
     const resp = await rawBuilder.then();
 
@@ -491,7 +491,7 @@ if (username=='all')
  {
 
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users"
+      "select * from up_users where is_delete=false"
     );
     const resp = await rawBuilder.then();
 
@@ -501,7 +501,7 @@ const rawBuilder = strapi.db.connection.raw(
  {
 
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where username = '"+username+"'"
+      "select * from up_users where is_delete=false and username = '"+username+"'"
     );
     const resp = await rawBuilder.then();
 
@@ -515,7 +515,7 @@ if (username=='all')
  {
 
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor' "
+      "select * from up_users where is_delete=false and rol = 'vendedor' "
     );
     const resp = await rawBuilder.then();
 
@@ -525,7 +525,7 @@ const rawBuilder = strapi.db.connection.raw(
  {
 
 const rawBuilder = strapi.db.connection.raw(
-      "select * from up_users where rol = 'vendedor' and username = '"+username+"'"
+      "select * from up_users where is_delete=false and rol = 'vendedor' and username = '"+username+"'"
     );
     const resp = await rawBuilder.then();
 
@@ -584,7 +584,7 @@ const deleteUserById= async(pObjeto)=>
     if (Object.entries(resp.rows).length!=0)
     {
         const rawBuilder = strapi.db.connection.raw(
-          "update up_users set  is_delete=true where id="+id
+          "update up_users set is_delete=true where id="+id
         );
 
         await rawBuilder.then();
